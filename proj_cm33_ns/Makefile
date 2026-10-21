@@ -7,8 +7,8 @@
 #
 ################################################################################
 # \copyright
-# Copyright 2024-2025, Cypress Semiconductor Corporation (an Infineon company)
-# SPDX-License-Identifier: Apache-2.0
+# (c) 2024-2026, Infineon Technologies AG, or an affiliate of Infineon
+# Technologies AG.  SPDX-License-Identifier: Apache-2.0
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -77,10 +77,10 @@ MBEDTLSFLAGS=MBEDTLS_USER_CONFIG_FILE='"configs/mbedtls_user_config.h"'
 # Add additional defines to the build process (without a leading -D).
 DEFINES+=$(MBEDTLSFLAGS) CYBSP_WIFI_CAPABLE CY_RETARGET_IO_CONVERT_LF_TO_CRLF CY_RTOS_AWARE 
 
-# Default configuration of mbedtls library.
-DEFINES+=MBEDTLS_CONFIG_FILE='"mbedtls/mbedtls_config.h"'
-# PSA configuration of mbedtls library.
-DEFINES+=MBEDTLS_PSA_CRYPTO_CONFIG_FILE='"configs/ifx_psa_crypto_config.h"'
+# TF-PSA-Crypto (PSA Crypto API) configuration, required by mbedtls 4.x.
+DEFINES+=IFX_TF_PSA IFX_TF_PSA_CRYPTO
+DEFINES+=TF_PSA_CRYPTO_CONFIG_FILE='"configs/tf_psa_crypto_config.h"'
+DEFINES+=TF_PSA_CRYPTO_USER_CONFIG_FILE='"configs/tf_psa_crypto_user_config.h"'
 
 # Select softfp or hardfp floating point. Default is softfp.
 VFP_SELECT+=
